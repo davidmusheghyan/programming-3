@@ -15,7 +15,7 @@ var matrix = [];
 
 function setup() {
     background('#acacac');
-    frameRate(1);
+    frameRate(12);
     for (var y = 0; y < n; y++) {
         matrix[y] = [];
 
