@@ -25,10 +25,8 @@ function setup() {
 
     }
 
-    matrix[3][2] = 5;
-    matrix[1][17] = 5;
-    matrix[12][12] = 5;
-    matrix[19][20] = 5;
+    matrix[2][2] = 5;
+    matrix[36][36] = 5;
     matrix[14][18] = 4;
     matrix[31][22] = 4;
     matrix[11][27] = 4;
