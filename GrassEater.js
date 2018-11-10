@@ -19,6 +19,11 @@ class GrassEater  extends Base{
             [this.x + 1, this.y + 1]
         ];
     }
+    chooseCell(character)
+    {
+    this.getNewCoordinates();
+    return super.chooseCell(character);
+    }
 
     move() {
         this.energy--;
