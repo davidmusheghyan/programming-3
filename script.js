@@ -12,6 +12,25 @@ var n = 40;
 var m = 40;
 
 var matrix = [];
+var weather = 1;
+
+var weatherName = document.getElementById("exanak");
+
+setInterval(function () {
+    weather++
+    if (weather > 4) {
+        weather = 1;
+    }
+  
+   
+}, 10000);
+
+
+function myFunction()
+{
+    if(weather == 1)
+    weatherName.innerHTML = "garun"
+}
 
 function setup() {
     background('#acacac');

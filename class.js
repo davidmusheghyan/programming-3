@@ -1,10 +1,10 @@
-class Base{
+class Base {
     constructor(x, y) {
         this.x = x;
         this.y = y;
         this.energy = 0;
 
-        
+
 
         this.directions = [
             [this.x - 1, this.y - 1],
