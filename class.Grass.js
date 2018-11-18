@@ -7,12 +7,12 @@ class Grass extends Base {
     }
     mul() {
         if (weather == 1)
-        this.multiply ++;
-        if (weather == 2)
+        this.multiply =this.multiply + 1.5;
+        else if (weather == 2)
         this.multiply  = this.multiply + 0.5;
-        if (weather == 3)
+        else if (weather == 3)
         this.multiply = this.multiply + 0.25;
-        if (weather == 1)
+        else if (weather == 1)
         this.multiply =0;
 
         var emptyCells = this.chooseCell(0);

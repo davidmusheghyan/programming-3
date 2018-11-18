@@ -7,6 +7,7 @@ var grassEater = [];
 var Gish = [];
 var voch = [];
 var stex = [];
+var a;
 
 var n = 40;
 var m = 40;
@@ -14,7 +15,7 @@ var m = 40;
 var matrix = [];
 var weather = 1;
 
-var weatherName = document.getElementById("exanak");
+var weatherName = document.getElementById("season");
 
 setInterval(function () {
     weather++
@@ -25,16 +26,45 @@ setInterval(function () {
    
 }, 10000);
 
+function framerate() {
+    if (weather == 1)
+    {
+        a = 12;
+    }
+    else if (weather == 2)
+    {
+        a = 9;
+    }
+    else if (weather == 3)
+    {
+        a = 6;
+    }
+    else if (weather == 4)
+    {
+        a = 1;
+    }
+
+}
 
 function myFunction()
 {
-    if(weather == 1)
-    weatherName.innerHTML = "garun"
+    if(weather == 1){
+    weatherName.innerHTML = "spring"
+    }
+    else if(weather == 2){
+    weatherName.innerHTML = "summer"
+    }
+    else if(weather == 3){
+    weatherName.innerHTML = "autumn"
+    }
+    else if(weather == 4){
+    weatherName.innerHTML = "winter"
+    } 
 }
 
 function setup() {
     background('#acacac');
-    frameRate(12);
+    
     for (var y = 0; y < n; y++) {
         matrix[y] = [];
 
@@ -89,6 +119,9 @@ function setup() {
 }
 function draw() {
     drawMatrix();
+    myFunction();
+    framerate();
+    frameRate(a);
 
 
     for (var i in grassEater) {
@@ -119,6 +152,19 @@ function draw() {
 
                 if (matrix[y][x] == 1) {
                     fill("green");
+                    
+                    if(weather == 2)
+                    {
+                        fill("#00b100");
+                    }
+                    else if(weather == 3)
+                    {
+                        fill("#f79c00");
+                    }
+                    else if(weather == 4)
+                    {
+                        fill("#d9ebe5");
+                    }
                     rect(x * side, y * side, side, side);
                 }
                 else if (matrix[y][x] == 0) {
@@ -128,15 +174,53 @@ function draw() {
 
                 else if (matrix[y][x] == 2) {
                     fill("yellow");
+                    
+                    if(weather == 2)
+                    {
+                        fill("#dcff00");
+                    }
+                    else if(weather == 3)
+                    {
+                        fill("#cec600");
+                    }
+                    else if(weather == 4)
+                    {
+                        fill("#fffcdb");
+                    }
                     rect(x * side, y * side, side, side);
                 }
 
                 else if (matrix[y][x] == 3) {
                     fill("red");
+
+                    if(weather == 2)
+                    {
+                        fill("#fd003d");
+                    }
+                    else if(weather == 3)
+                    {
+                        fill("#b6002c");
+                    }
+                    else if(weather == 4)
+                    {
+                        fill("#ffedef");
+                    }
                     rect(x * side, y * side, side, side);
                 }
                 else if (matrix[y][x] == 4) {
                     fill("blue");
+                    if(weather == 2)
+                    {
+                        fill("#0085ff");
+                    }
+                    else if(weather == 3)
+                    {
+                        fill("#003dc1");
+                    }
+                    else if(weather == 4)
+                    {
+                        fill("#c9d3ff");
+                    }
                     rect(x * side, y * side, side, side);
                 }
                 else if (matrix[y][x] == 5) {
