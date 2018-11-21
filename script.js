@@ -22,49 +22,44 @@ setInterval(function () {
     if (weather > 4) {
         weather = 1;
     }
-  
-   
+
+
 }, 10000);
 
 function framerate() {
-    if (weather == 1)
-    {
+    if (weather == 1) {
         a = 12;
     }
-    else if (weather == 2)
-    {
+    else if (weather == 2) {
         a = 9;
     }
-    else if (weather == 3)
-    {
+    else if (weather == 3) {
         a = 6;
     }
-    else if (weather == 4)
-    {
+    else if (weather == 4) {
         a = 1;
     }
 
 }
 
-function myFunction()
-{
-    if(weather == 1){
-    weatherName.innerHTML = "spring"
+function myFunction() {
+    if (weather == 1) {
+        weatherName.innerHTML = "spring"
     }
-    else if(weather == 2){
-    weatherName.innerHTML = "summer"
+    else if (weather == 2) {
+        weatherName.innerHTML = "summer"
     }
-    else if(weather == 3){
-    weatherName.innerHTML = "autumn"
+    else if (weather == 3) {
+        weatherName.innerHTML = "autumn"
     }
-    else if(weather == 4){
-    weatherName.innerHTML = "winter"
-    } 
+    else if (weather == 4) {
+        weatherName.innerHTML = "winter"
+    }
 }
 
 function setup() {
     background('#acacac');
-    
+
     for (var y = 0; y < n; y++) {
         matrix[y] = [];
 
@@ -152,17 +147,14 @@ function draw() {
 
                 if (matrix[y][x] == 1) {
                     fill("green");
-                    
-                    if(weather == 2)
-                    {
+
+                    if (weather == 2) {
                         fill("#00b100");
                     }
-                    else if(weather == 3)
-                    {
+                    else if (weather == 3) {
                         fill("#f79c00");
                     }
-                    else if(weather == 4)
-                    {
+                    else if (weather == 4) {
                         fill("#d9ebe5");
                     }
                     rect(x * side, y * side, side, side);
@@ -173,19 +165,55 @@ function draw() {
                 }
 
                 else if (matrix[y][x] == 2) {
-                    fill("yellow");
-                    
-                    if(weather == 2)
-                    {
-                        fill("#dcff00");
+                    for (var i in grassEater) {
+                        if (grassEater[i].x == x && grassEater[i].y == y) {
+                            if (grassEater[i].genus == 0) {
+                                fill("yellow");
+                            } else {
+                                fill("orange");
+                            }
+
+                        }
                     }
-                    else if(weather == 3)
-                    {
-                        fill("#cec600");
+
+                    if (weather == 2) {
+                        for (var i in grassEater) {
+                            if (grassEater[i].x == x && grassEater[i].y == y) {
+                                if (grassEater[i].genus == 0) {
+                                    fill("#dcff00");
+                                } else {
+                                    fill("#eeb945");
+                                }
+
+                            }
+                        }
+
                     }
-                    else if(weather == 4)
-                    {
-                        fill("#fffcdb");
+                    else if (weather == 3) {
+                        for (var i in grassEater) {
+                            if (grassEater[i].x == x && grassEater[i].y == y) {
+                                if (grassEater[i].genus == 0) {
+                                    fill("#cec600");
+                                } else {
+                                    fill("#be5a00");
+                                }
+
+                            }
+                        }
+
+                    }
+                    else if (weather == 4) {
+                        for (var i in grassEater) {
+                            if (grassEater[i].x == x && grassEater[i].y == y) {
+                                if (grassEater[i].genus == 0) {
+                                    fill("#fffcdb");
+                                } else {
+                                    fill("#ffecd1");
+                                }
+
+                            }
+                        }
+
                     }
                     rect(x * side, y * side, side, side);
                 }
@@ -193,32 +221,26 @@ function draw() {
                 else if (matrix[y][x] == 3) {
                     fill("red");
 
-                    if(weather == 2)
-                    {
+                    if (weather == 2) {
                         fill("#fd003d");
                     }
-                    else if(weather == 3)
-                    {
+                    else if (weather == 3) {
                         fill("#b6002c");
                     }
-                    else if(weather == 4)
-                    {
+                    else if (weather == 4) {
                         fill("#ffedef");
                     }
                     rect(x * side, y * side, side, side);
                 }
                 else if (matrix[y][x] == 4) {
                     fill("blue");
-                    if(weather == 2)
-                    {
+                    if (weather == 2) {
                         fill("#0085ff");
                     }
-                    else if(weather == 3)
-                    {
+                    else if (weather == 3) {
                         fill("#003dc1");
                     }
-                    else if(weather == 4)
-                    {
+                    else if (weather == 4) {
                         fill("#c9d3ff");
                     }
                     rect(x * side, y * side, side, side);
