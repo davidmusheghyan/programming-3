@@ -2,6 +2,7 @@
 
 var side = 12;
 
+var ThunderArr = [];
 var grassArr = [];
 var grassEater = [];
 var Gish = [];
@@ -25,6 +26,28 @@ setInterval(function () {
 
 
 }, 10000);
+
+
+
+function Thunder() {
+
+    ThY = random(0,matrix.length);
+    ThX = random(0,matrix[0].length);
+
+    // for (var y in matrix) {
+    //     for (var x in matrix[y]) {
+    //         if (ThY == y) {
+    //             if (ThX == x) {
+    //                 ThunderArr.push(new thunder(x, y, 8));
+    //                 console.log("aaawwwwawawaw");
+    //             }
+    //         }
+    //     }
+    // }
+
+    ThunderArr.push(new thunder(ThY, ThX, 8));
+
+}
 
 function framerate() {
     if (weather == 1) {
@@ -106,18 +129,22 @@ function setup() {
             if (matrix[y][x] == 5) {
                 stex.push(new stexcoxik(x, y));
             }
+            if (matrix[y][x] == 6) {
+                ThunderArr.push(new thunder(x, y));
+            }
         }
 
     }
 
-
 }
+
+
 function draw() {
     drawMatrix();
     myFunction();
     framerate();
     frameRate(a);
-
+    Thunder();  
 
     for (var i in grassEater) {
         grassEater[i].eat();
@@ -133,6 +160,9 @@ function draw() {
         }
         for (var i in stex) {
             stex[i].stexc();
+        }
+        for (var i in ThunderArr) {
+            ThunderArr[i].hit();
         }
     }
 

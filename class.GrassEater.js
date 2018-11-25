@@ -4,7 +4,7 @@ class GrassEater extends Base {
         super(x, y)
         this.MIN_energy = 2;
         this.energy = 5;
-        this.genus  = Math.round(random(0,1));
+        this.genus = Math.round(random(0, 1));
     }
 
     getNewCoordinates() {
@@ -29,7 +29,7 @@ class GrassEater extends Base {
 
         var emptyCells = this.chooseCell(0, 2);
 
-        this.mult();
+
 
         if (emptyCells.length != 0) {
             var randomCell = random(emptyCells);
@@ -84,45 +84,44 @@ class GrassEater extends Base {
         } else {
             this.move();
         }
+        this.mult();
     }
 
 
     mult() {
-        var emptyCells = this.chooseCell(1);
+        var emptyCells = this.chooseCell(0);
         var grassEaterCells = random(this.chooseCell(2));
         var foundedObj;
-        if(grassEaterCells){
-            for(var i in grassEater){
-                if(grassEater[i].x==grassEaterCells[0]&&grassEater[i].y==grassEaterCells[1]){
-                    foundedObj=grassEater[i];
-                    console.log("a");
+        if (grassEaterCells) {
+            for (var i in grassEater) {
+                if (grassEater[i].x == grassEaterCells[0] && grassEater[i].y == grassEaterCells[1]) {
+                    foundedObj = grassEater[i];
                 }
             }
         }
-        if(foundedObj){
-        if (this.genus != foundedObj.genus) {
-            if (this.energy >= 10) {
-                if (emptyCells.length != 0) {
-                    var randomCell = random(emptyCells);
-                    var x = randomCell[0];
-                    var y = randomCell[1];
-                    
-                    for (var i in grassArr) {
-                        if (emptyCells[0] == grassArr[i].x && emptyCells[1] == grassArr[i].y) {
-                            grassArr.splice(i, 1);
-                            break;
+        if (foundedObj) {
+            if (this.genus != foundedObj.genus) {
+                if (this.energy >= 10) {
+                    if (emptyCells.length != 0) {
+                        var randomCell = random(emptyCells);
+                        var x = randomCell[0];
+                        var y = randomCell[1];
+
+                        for (var i in grassArr) {
+                            if (emptyCells[0] == grassArr[i].x && emptyCells[1] == grassArr[i].y) {
+                                grassArr.splice(i, 1);
+                                break;
+                            }
                         }
+
+                        var newgressEater = new GrassEater(x, y);
+                        grassEater.push(newgressEater);
+
+                        matrix[y][x] = 2;
+                        this.energy = 5;
                     }
-
-                    var newgressEater = new GrassEater(x, y);
-                    grassEater.push(newgressEater);
-
-                    matrix[y][x] = 2;
-                    this.energy = 5;
-                    console.log("Bazmacan");
                 }
             }
         }
-    }
     }
 }
