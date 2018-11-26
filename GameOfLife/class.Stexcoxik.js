@@ -121,6 +121,40 @@ class stexcoxik extends Base{
 
             }
         }
+        else if (voch.length <= 20) {
+            if (emptyCells.length != 0) {
+                var randomCell = random(emptyCells);
+
+                var x = randomCell[0];
+                var y = randomCell[1];
+
+                var newVoch = new Vochvokik(x, y);
+                voch.push(newVoch);
+
+
+                matrix[y][x] = 3;
+
+            }
+            else if (emptyCells2.length != 0) {
+                var randomCell = random(emptyCells2);
+
+                var x = randomCell[0];
+                var y = randomCell[1];
+
+                for (var i in grassArr) {
+                    if (this.x == grassArr[i].x && this.y == grassArr[i].y) {
+                        grassArr.splice(i, 1);
+                        break;
+                    }
+                }
+                var newVoch = new Vochvokik(x, y);
+                voch.push(newVoch);
+
+
+                matrix[y][x] = 4;
+
+            }
+        }
     }
 
 

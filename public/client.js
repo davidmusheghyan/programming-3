@@ -1,7 +1,8 @@
-var socket = io.connect('http://localhost:4444');
+var socket = io.connect('http://localhost:4544');
+var i = 0;
 var statistics = {
     "timestamp": "",
-    "clicks": 0,
+    "grass": 0,
     "dbclicks": 0,
     "keypresses": 0,
     "framecount": 0
@@ -20,11 +21,12 @@ function draw() {
     }
 }
 
-function mouseClicked() {
-    fill(random(255), random(255), random(255));
-    ellipse(mouseX, mouseY, 30, 30);
-    statistics.clicks++;
+function GrassArr() {
+    if (i in grassArr.length)
+    {
+    statistics.grass++;
     changeView(statistics);
+    }
 }
 
 function keyPressed() {

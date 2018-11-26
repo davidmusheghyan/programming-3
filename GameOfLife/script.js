@@ -1,7 +1,8 @@
 
 var side = 12;
 
-var ThunderArr = [];
+var voch = [];
+// var ThunderArr = [];
 var grassArr = [];
 var grassEater = [];
 var Gish = [];
@@ -26,13 +27,24 @@ setInterval(function () {
 }, 10000);
 
 
+// setInterval(function(){
+//     console.log("hit");
+//     var newThunderArr = new thunder(x, y);
+//     ThunderArr.push(newThunderArr);
 
-function Thunder() {
-    ThY = random(0,matrix.length);
-    ThX = random(0,matrix[0].length);
+
+//     matrix[y][x] = 6;
+
+    
+// },5555)
+
+
+// function Thunder() {
+//     ThY = random(0,matrix.length);
+//     ThX = random(0,matrix[0].length);
     
 
-}
+// }
 
 function framerate() {
     if (weather == 1) {
@@ -112,10 +124,14 @@ function setup() {
                 stex.push(new stexcoxik(x, y));
             }
             if (matrix[y][x] == 4) {
-                ThX = x;
-                ThY = y;
-                ThunderArr.push(new thunder(x, y));
+                voch.push(new Vochvokik(x, y));
             }
+            //  if (matrix[y][x] == 6) {
+            //      ThX = x;
+            //     ThY = y;
+            //      ThunderArr.push(new thunder(x, y));
+            // }
+           
         }
 
     }
@@ -128,7 +144,7 @@ function draw() {
     myFunction();
     framerate();
     frameRate(a);
-    Thunder();  
+    // Thunder();  
 
     for (var i in grassEater) {
         grassEater[i].eat();
@@ -139,11 +155,14 @@ function draw() {
     for (var i in Gish) {
         Gish[i].eat();
 
-        for (var i in ThunderArr) {
-            ThunderArr[i].eat();
-        }
+        // for (var i in ThunderArr) {
+        //     ThunderArr[i].eat();
+        // }
         for (var i in stex) {
             stex[i].stexc();
+        }
+        for (var i in voch) {
+            voch[i].eat();
         }
     }
 
@@ -260,6 +279,10 @@ function draw() {
                     fill("SaddleBrown");
                     rect(x * side, y * side, side, side);
                 }
+                // else if (matrix[y][x] == 6) {
+                //     fill("DarkBlack");
+                //     rect(x * side, y * side, side, side);
+                // }
 
             }
         }
