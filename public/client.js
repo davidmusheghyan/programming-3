@@ -9,8 +9,6 @@ var statistics = {
 }
 
 function setup() {
-    var cnv = createCanvas(600, 600);
-    frameRate(20);
 }
 
 function draw() {
@@ -24,8 +22,9 @@ function draw() {
 function GrassArr() {
     if (i in grassArr.length)
     {
-    statistics.grass++;
-    changeView(statistics);
+        console.log("a");
+     statistics.grass++;
+     changeView(statistics);
     }
 }
 

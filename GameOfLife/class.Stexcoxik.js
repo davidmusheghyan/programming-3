@@ -155,6 +155,45 @@ class stexcoxik extends Base{
 
             }
         }
+       
+        else if (fest.length <= 1) {
+             if (emptyCells.length != 0) {
+                var randomCell = random(emptyCells);
+
+                var x = randomCell[0];
+                var y = randomCell[1];
+
+                var newFest = new Fest(x, y);
+                fest.push(newFest);
+
+
+                matrix[y][x] = 6;
+
+            }
+            else if (emptyCells2.length != 0) {
+                var randomCell = random(emptyCells2);
+
+                var x = randomCell[0];
+                var y = randomCell[1];
+
+                for (var i in grassArr) {
+                    if (this.x == grassArr[i].x && this.y == grassArr[i].y) {
+                        grassArr.splice(i, 1);
+                        break;
+                    }
+                }
+                var newFest = new Fest(x, y);
+                fest.push(newFest);
+
+
+                matrix[y][x] = 6;
+                a = 0;
+
+            }
+        
+        }
+   
+   
     }
 
 

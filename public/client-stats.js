@@ -14,7 +14,7 @@ socket.on("send stats",function(statistics){
     for(var st of statistics){
         tableHTML+="<tr>";
         tableHTML+="<td>"+st.timestamp+"</td>";
-        tableHTML+="<td>"+st.clicks+"</td>";
+        tableHTML+="<td>"+st.grass+"</td>";
         tableHTML+="<td>"+st.dbclicks+"</td>";
         tableHTML+="<td>"+st.keypresses+"</td>";
         tableHTML+="<td>"+st.framecount+"</td>";
