@@ -127,9 +127,9 @@ class Fest extends Base {
         var AllCell4 = this.chooseCellDie(4);
 
         for (this.i in this.getNewCoordinatesDie) {
-            if(this.getNewCoordinatesDie[i] == AllCell1 || this.getNewCoordinatesDie[i] == AllCell2 ||  this.getNewCoordinatesDie[i] == AllCell3 || this.getNewCoordinatesDie[i] == AllCell4 )
-            var x = this.getNewCoordinatesDie[i][0];
-            var y = this.getNewCoordinatesDie[i][1];
+            if(this.getNewCoordinatesDie[i] == AllCell1 /*|| this.getNewCoordinatesDie[i] == AllCell2 ||  this.getNewCoordinatesDie[i] == AllCell3 || this.getNewCoordinatesDie[i] == AllCell4*/ )
+             var x = this.getNewCoordinatesDie[i][0];
+             var y = this.getNewCoordinatesDie[i][1];
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
 
                 matrix[this.y][this.x] = 0;

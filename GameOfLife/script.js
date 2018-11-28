@@ -2,7 +2,7 @@
 var side = 12;
 
 var voch = [];
-var fest =  [];
+var fest = [];
 var grassArr = [];
 var grassEater = [];
 var Gish = [];
@@ -16,6 +16,15 @@ var matrix = [];
 var weather = 1;
 
 var weatherName = document.getElementById("season");
+
+var statistics = {
+    "Grass": "",
+    "GrassEater": "",
+    "Predator": "",
+    "Voch": "",
+    "Timestamp": "",
+    "Events": ""
+}
 
 setInterval(function () {
     weather++
@@ -112,11 +121,61 @@ function setup() {
             if (matrix[y][x] == 6) {
                 fest.push(new Fest(x, y));
             }
-           
+
         }
 
     }
 
+}
+function timestamp() {
+    if (frameCount % 500 === 0) {
+        statistics.timestamp = (new Date()).toString();
+        statistics.framecount = frameCount;
+        socket.emit("send data", statistics);
+    }
+}
+function StatisticsPersons() {
+    for (var y = 0; y < matrix.length; y++) {
+        for (var x = 0; x < matrix[y].length; x++) {
+
+            if (matrix[y][x] == 1) {
+               
+                statistics.Grass++;
+                changeView(statistics);
+            }
+            else if (matrix[y][x] == 2) {
+              
+                statistics.GrassEater++;
+                changeView(statistics);
+            }
+            else if (matrix[y][x] == 3) {
+                
+                statistics.Predator++;
+                changeView(statistics);
+                
+            }
+            else if (matrix[y][x] == 4) {
+                
+                statistics.Voch++;
+                changeView(statistics);
+                
+            }
+        }
+    }
+}
+function changeView(stat) {
+    var c = document.getElementById("Grass");
+    var k = document.getElementById("GrassEater");
+    var d = document.getElementById("Predator");
+    var g = document.getElementById("Voch");
+    var t = document.getElementById("Timestamp");
+    var l = document.getElementById("Events");
+    c.innerHTML = stat.Grass;
+    k.innerHTML = stat.GrassEater;
+    d.innerHTML = stat.Predator;
+    g.innerHTML = stat.Voch;
+    t.innerHTML = stat.Timestamp;
+    l.innerHTML = stat.Events;
 }
 
 
@@ -125,7 +184,9 @@ function draw() {
     myFunction();
     framerate();
     frameRate(a);
-    
+    timestamp();
+    StatisticsPersons();
+
 
     for (var i in grassEater) {
         grassEater[i].eat();
@@ -136,16 +197,16 @@ function draw() {
     for (var i in Gish) {
         Gish[i].eat();
     }
-        for (var i in stex) {
-            stex[i].stexc();
-        }
-        for (var i in voch) {
-            voch[i].eat();
-        }
-        for (var i in fest) {
-            fest[i].move();
-        }
-    
+    for (var i in stex) {
+        stex[i].stexc();
+    }
+    for (var i in voch) {
+        voch[i].eat();
+    }
+    for (var i in fest) {
+        fest[i].move();
+    }
+
 
 
     function drawMatrix() {
@@ -265,7 +326,7 @@ function draw() {
                     rect(x * side, y * side, side, side);
                 }
             }
-            
+
         }
 
 
