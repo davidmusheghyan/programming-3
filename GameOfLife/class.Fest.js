@@ -63,15 +63,24 @@ class Fest extends Base {
         ];
     }
 
-    
+
 
     chooseCell(character) {
         this.getNewCoordinates();
         return super.chooseCell(character);
     }
-    chooseCellDie(character) {
-        this.getNewCoordinatesDie();
-        return super.chooseCellDie(character);
+    chooseCellDie(characterDie) {
+        var found = [];
+        for (var i in this.directionsDie) {
+            var x = this.directionsDie[i][0];
+            var y = this.directionsDie[i][1];
+            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
+                if (matrix[y][x] == character) {
+                    found.push(this.directionsDie[i]);
+                }
+            }
+        }
+        return found;
     }
     move() {
         this.energy--;
@@ -120,25 +129,29 @@ class Fest extends Base {
         }
     }
 
-    boom() {  
-        var AllCell1 = this.chooseCellDie(1);
-        var AllCell2 = this.chooseCellDie(2);
-        var AllCell3 = this.chooseCellDie(3);
-        var AllCell4 = this.chooseCellDie(4);
+    boom() {
+        var emptyCells = this.chooseCellDie(1);
+        if (emptyCells.length != 0) {
 
-        for (this.i in this.getNewCoordinatesDie) {
-            if(this.getNewCoordinatesDie[i] == AllCell1 /*|| this.getNewCoordinatesDie[i] == AllCell2 ||  this.getNewCoordinatesDie[i] == AllCell3 || this.getNewCoordinatesDie[i] == AllCell4*/ )
-             var x = this.getNewCoordinatesDie[i][0];
-             var y = this.getNewCoordinatesDie[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
+            var randomCell = random(emptyCells)
 
-                matrix[this.y][this.x] = 0;
+            var x = randomCell[0];
+            var y = randomCell[1];
+
+            matrix[y][x] = 0;
+            matrix[this.y][this.x] = 0;
+
+            this.x = x;
+            this.y = y;
+
+            for (var i in grassArr) {
+                if (this.x == grassArr.length[i].x && this.y == grassArr.length[i].y) {
+                    grassArr.splice(i, 1);
+                    break;
+                }
             }
+       
         }
     }
 }
-
-
-
-
 

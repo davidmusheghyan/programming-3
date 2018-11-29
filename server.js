@@ -21,15 +21,11 @@ app.use('/socket', express.static(__dirname + '/node_modules/socket.io-client/di
 app.use('/p5', express.static(__dirname + '/node_modules/p5/lib/'));
 
 
+app.get('/index.stats.html', function (req, res) {
+    res.redirect('index.html');
+});
 app.get('/', function (req, res) {
     res.redirect('index.stats.html');
-});
-
-app.get('/stats', function (req, res) {
-    res.redirect('stats.html');
-});
-app.get('/index', function (req, res) {
-    res.redirect('index.html');
 });
 
 server.listen(4544);
