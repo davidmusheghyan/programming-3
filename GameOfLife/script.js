@@ -23,7 +23,8 @@ var statistics = {
     "Predator": "",
     "Voch": "",
     "Timestamp": "",
-    "Events": ""
+    "Events": "",
+    "framecount":""
 }
 
 setInterval(function () {
@@ -128,10 +129,11 @@ function setup() {
 
 }
 function timestamp() {
-    if (frameCount % 500 === 0) {
+    if (frameCount % 100 == 0) {
         statistics.timestamp = (new Date()).toString();
         statistics.framecount = frameCount;
-        socket.emit("send data", statistics);
+        changeView(statistics);
+        changeView(statistics);
     }
 }
 function StatisticsPersons() {
@@ -168,13 +170,13 @@ function changeView(stat) {
     var k = document.getElementById("GrassEater");
     var d = document.getElementById("Predator");
     var g = document.getElementById("Voch");
-    var t = document.getElementById("Timestamp");
+    var t = document.getElementById("framecount");
     var l = document.getElementById("Events");
     c.innerHTML = stat.Grass;
     k.innerHTML = stat.GrassEater;
     d.innerHTML = stat.Predator;
     g.innerHTML = stat.Voch;
-    t.innerHTML = stat.Timestamp;
+    t.innerHTML = stat.framecount;
     l.innerHTML = stat.Events;
 }
 

@@ -69,7 +69,8 @@ class Fest extends Base {
         this.getNewCoordinates();
         return super.chooseCell(character);
     }
-    chooseCellDie(characterDie) {
+    chooseCellDie(character) {
+        this.getNewCoordinatesDie();
         var found = [];
         for (var i in this.directionsDie) {
             var x = this.directionsDie[i][0];
@@ -131,27 +132,79 @@ class Fest extends Base {
 
     boom() {
         var emptyCells = this.chooseCellDie(1);
+        var emptyCells1 = this.chooseCellDie(2);
+        var emptyCells2 = this.chooseCellDie(3);
+        var emptyCells3 = this.chooseCellDie(4);
+        for(i in this.directionsDie)
+        {
         if (emptyCells.length != 0) {
-
             var randomCell = random(emptyCells)
-
             var x = randomCell[0];
             var y = randomCell[1];
-
             matrix[y][x] = 0;
             matrix[this.y][this.x] = 0;
-
             this.x = x;
             this.y = y;
 
             for (var i in grassArr) {
-                if (this.x == grassArr.length[i].x && this.y == grassArr.length[i].y) {
+                if (this.x == grassArr[i].x && this.y == grassArr[i].y) {
+                    console.log("b");
                     grassArr.splice(i, 1);
                     break;
                 }
             }
-       
+        }
+        if (emptyCells1.length != 0) {
+            var randomCell = random(emptyCells1)
+            var x = randomCell[0];
+            var y = randomCell[1];
+            matrix[y][x] = 0;
+            matrix[this.y][this.x] = 0;
+            this.x = x;
+            this.y = y;
+
+            for (var i in grassEater) {
+                if (this.x == grassEater[i].x && this.y == grassEater[i].y) {
+                    console.log("d");
+                    grassEater.splice(i, 1);
+                    break;
+                }
+            }
+        }
+        if (emptyCells2.length != 0) {
+            var randomCell = random(emptyCells2)
+            var x = randomCell[0];
+            var y = randomCell[1];
+            matrix[y][x] = 0;
+            matrix[this.y][this.x] = 0;
+            this.x = x;
+            this.y = y;
+
+            for (var i in Gish) {
+                if (this.x == Gish[i].x && this.y == Gish[i].y) {
+                    console.log("c");
+                   Gish.splice(i, 1);
+                    break;
+                }
+            }
+        }
+        if (emptyCells3.length != 0) {
+            var randomCell = random(emptyCells3)
+            var x = randomCell[0];
+            var y = randomCell[1];
+            matrix[y][x] = 0;
+            matrix[this.y][this.x] = 0;
+            this.x = x;
+            this.y = y;
+
+            for (var i in voch) {
+                if (this.x == voch[i].x && this.y == voch[i].y) {
+                    console.log("g");
+                   voch.splice(i, 1);
+                    break;
+                }
+            }
         }
     }
+    }
 }
-
