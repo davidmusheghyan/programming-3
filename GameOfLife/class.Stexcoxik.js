@@ -1,6 +1,6 @@
-class stexcoxik extends Base{
+class stexcoxik extends Base {
     constructor(x, y) {
-       super(x,y)
+        super(x, y)
         this.MIN_energy = 2;
         this.directions = [];
     }
@@ -47,7 +47,7 @@ class stexcoxik extends Base{
 
             var newgrass = new Grass(x, y);
             grassArr.push(newgrass);
-            
+
 
             matrix[y][x] = 1;
         }
@@ -62,7 +62,7 @@ class stexcoxik extends Base{
                 var newgrassEater = new GrassEater(x, y);
                 grassEater.push(newgrassEater);
 
-                
+
 
                 matrix[y][x] = 2;
             }
@@ -155,9 +155,11 @@ class stexcoxik extends Base{
 
             }
         }
-       
-        else if (fest.length <= 1) {
-             if (emptyCells.length != 0) {
+
+
+
+        if (frameCount % 5== 0) {
+            if (emptyCells.length != 0) {
                 var randomCell = random(emptyCells);
 
                 var x = randomCell[0];
@@ -168,7 +170,7 @@ class stexcoxik extends Base{
 
 
                 matrix[y][x] = 6;
-
+                a = 0;
             }
             else if (emptyCells2.length != 0) {
                 var randomCell = random(emptyCells2);
@@ -187,14 +189,12 @@ class stexcoxik extends Base{
 
 
                 matrix[y][x] = 6;
-                a = 0;
+                
 
             }
-        
         }
-   
-   
     }
 
-
 }
+
+

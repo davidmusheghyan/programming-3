@@ -129,7 +129,7 @@ function setup() {
 
 }
 function timestamp() {
-    if (frameCount % 100 == 0) {
+    if (frameCount % 1 == 0) {
         statistics.timestamp = (new Date()).toString();
         statistics.framecount = frameCount;
         changeView(statistics);
@@ -159,6 +159,12 @@ function StatisticsPersons() {
             else if (matrix[y][x] == 4) {
                 
                 statistics.Voch++;
+                changeView(statistics);
+                
+            }
+            else if (matrix[y][x] == 6) {
+                
+                statistics.Events++;
                 changeView(statistics);
                 
             }
